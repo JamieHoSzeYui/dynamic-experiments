@@ -1,0 +1,24 @@
+#!/sbin/sh
+
+ PIPE=$2; ZIP=$3
+ ui_print() { 
+ echo -n -e "ui_print $1\n" > /proc/self/fd/$PIPE
+ echo -n -e "ui_print\n" > /proc/self/fd/$PIPE
+ echo "$1"
+}
+ 
+ mkdir -p /tmp/bb
+ export PATH=/tmp/bb:$PATH
+ 
+ ui_print "GSIFlash - Flash GSI without fastboot"
+ ui_print "by henloboi 2k21"
+ if [[ $(ls /sdcard/ | grep gsi.img) ]]; then
+       ui_print "GSI detected, proceeding."
+       dd if=/sdcard/gsi.img of=/dev/block/mapper/system conv=fsync
+ else
+       ui_print "BRUH : No GSI detected in /sdcard/"
+       ui_print "Rename the GSI to gsi.img"
+ fi
+ ui_print "All done !"
+
+
