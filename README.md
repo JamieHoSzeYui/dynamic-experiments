@@ -2,7 +2,7 @@
 
 ### Releases ###
 
-[Latest mkarw](https://github.com/JamieHoSzeYui/dynamic-experiments/releases/tag/mkarw-02) // [latest FlashGSI](https://t.me/JamieProjects/400)
+[Latest mkarw](https://github.com/JamieHoSzeYui/dynamic-experiments/releases/tag/mkarw-02) // [latest FlashGSI](https://github.com/JamieHoSzeYui/dynamic-experiments/releases/tag/flashgsi)
 
 ### Opensource ###
 
