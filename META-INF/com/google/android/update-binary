@@ -15,42 +15,71 @@
  if [[ $(ls /dev/block/mapper | grep system) ]]; then 
     ui_print "System detected - Making RW"
     /bin/blockdev --setrw /dev/block/mapper/system
+    e2fsck -f /dev/block/mapper/system
+    resize2fs /dev/block/mapper/system
  fi  
  if [[ $(ls /dev/block/mapper | grep product) ]]; then 
     ui_print "Product detected - Making RW"
     /bin/blockdev --setrw /dev/block/mapper/product 
+    e2fsck -f /dev/block/mapper/product 
+    resize2fs /dev/block/mapper/product 
+    e2fsck -E unshare_blocks /dev/block/mapper/product 
+ 
  fi 
   if [[ $(ls /dev/block/mapper | grep vendor) ]]; then 
     ui_print "Vendor detected - Making RW"
     /bin/blockdev --setrw /dev/block/mapper/vendor
+    e2fsck -f /dev/block/mapper/vendor
+    resize2fs /dev/block/mapper/vendor
+    e2fsck-E unshare_blocks /dev/block/mapper/vendor
  fi 
   if [[ $(ls /dev/block/mapper | grep system_ext) ]]; then 
     ui_print "System_ext detected - Making RW"
     /bin/blockdev --setrw /dev/block/mapper/system_ext 
+    e2fsck -f /dev/block/mapper/system_ext
+    resize2fs /dev/block/mapper/system_ext
+    e2fsck-E unshare_blocks /dev/block/mapper/system_ext
  fi 
  if [[ $(ls /dev/block/mapper | grep system_a) ]]; then 
      ui_print "system_a detected - Making RW"
      /bin/blockdev --setrw /dev/block/mapper/system_a
+     e2fsck -f /dev/block/mapper/system_a
+     resize2fs /dev/block/mapper/system_a
+ 
  fi
  if [[ $(ls /dev/block/mapper | grep system_b) ]]; then 
      ui_print "system_b detected - Making RW"
      /bin/blockdev --setrw /dev/block/mapper/system_b
+     e2fsck -f /dev/block/mapper/system_b
+     resize2fs /dev/block/mapper/system_b     
  fi
   if [[ $(ls /dev/block/mapper | grep vendor_a) ]]; then 
      ui_print "vendor_a detected - Making RW"
      /bin/blockdev --setrw /dev/block/mapper/vendor_a
- fi
+     e2fsck -f /dev/block/mapper/vendor_a
+     resize2fs /dev/block/mapper/vendor_a
+     e2fsck-E unshare_blocks /dev/block/mapper/vendor_a
+  fi
   if [[ $(ls /dev/block/mapper | grep vendor_b) ]]; then 
      ui_print "vendor_b detected - Making RW"
      /bin/blockdev --setrw /dev/block/mapper/vendor_b
- fi
+     e2fsck -f /dev/block/mapper/vendor_b
+     resize2fs /dev/block/mapper/vendor_b
+     e2fsck-E unshare_blocks /dev/block/mapper/vendor_b
+  fi
   if [[ $(ls /dev/block/mapper | grep product_a) ]]; then 
      ui_print "product_a detected - Making RW"
      /bin/blockdev --setrw /dev/block/mapper/product_a
+     e2fsck -f /dev/block/mapper/product_a
+     resize2fs /dev/block/mapper/product_a
+     e2fsck-E unshare_blocks /dev/block/mapper/product_a 
  fi
   if [[ $(ls /dev/block/mapper | grep product_b) ]]; then 
      ui_print "product_b detected - Making RW"
      /bin/blockdev --setrw /dev/block/mapper/product_b
+     e2fsck -f /dev/block/mapper/product_b
+     resize2fs /dev/block/mapper/product_b
+     e2fsck-E unshare_blocks /dev/block/mapper/product_b     
  fi
  ui_print "All done !"
 
